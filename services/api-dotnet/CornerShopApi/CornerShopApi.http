@@ -1,0 +1,6 @@
+@CornerShopApi_HostAddress = http://localhost:5093
+
+GET {{CornerShopApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

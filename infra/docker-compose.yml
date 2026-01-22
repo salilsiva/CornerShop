@@ -1,0 +1,14 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: cornershop-sql
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=P@ssword5QL
+    ports:
+      - "1433:1433"
+    volumes:
+      - cornershop_sql_data:/var/opt/mssql
+
+volumes:
+  cornershop_sql_data:
