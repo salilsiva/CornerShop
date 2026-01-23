@@ -1,9 +1,15 @@
 # STATUS
 
 ## Day 1
-- [ ] Repo structure created
-- [ ] SQL Server Docker running
-- [ ] .NET API scaffold running with Swagger
+- [x] Repo structure created
+- [x] SQL Server Docker running
+- [x] .NET API scaffold running with Swagger
+
+## Day 2
+- [x] EF Core connected to SQL Server
+- [x] Products table created via migrations
+- [x] Seeded 20 products
+- [x] Products API endpoints working (GET all, GET by id)
 
 ## Current branch
 main
