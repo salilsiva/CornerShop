@@ -4,7 +4,7 @@ services:
     container_name: cornershop-sql
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=P@ssword5QL
+      - MSSQL_SA_PASSWORD=${SA_PASSWORD}
     ports:
       - "1433:1433"
     volumes:

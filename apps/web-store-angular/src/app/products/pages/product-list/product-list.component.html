@@ -1,0 +1,11 @@
+<div class="page">
+    <h2>Products</h2>
+
+    <div *ngIf="loading">Loading...</div>
+    <div *ngIf="error">Error: {{error}}</div>
+
+    <div class="grid" *ngIf="!loading && !error">
+        <app-product-card *ngFor="let p of products" [product] = "p"></app-product-card>
+
+    </div>
+</div>

@@ -17,7 +17,20 @@ builder.Services.AddDbContext<CSDbContext>(options =>
 
 builder.Services.AddControllers();
 
+//Enable CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontendDev", policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
+app.UseCors("AllowFrontendDev");
 app.MapControllers();
 
 // Configure the HTTP request pipeline.

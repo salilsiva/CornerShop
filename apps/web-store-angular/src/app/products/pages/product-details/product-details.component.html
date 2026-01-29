@@ -1,0 +1,21 @@
+
+<div class="page" *ngIf="!loading && product">
+    <a routerLink="/products">← Back</a>
+
+    <div class="layout">
+        <img [src]="product.imageUrl" [alt]="product.name"/>
+
+        <div>
+            <h2>{{product.name}}</h2>
+            <p>{{product.description}}</p>
+            <p><b>Category: </b>{{product.category}}</p>
+            <p><b>Stock: </b>{{product.stock}}</p>
+            <h3>£{{product.price.toFixed(2)}}</h3>
+
+            <button (click)="addToCart()">Add to cart</button>
+        </div>
+    </div>
+</div>
+
+<div class="page" *ngIf="loading">loading...</div>
+<div class="page" *ngIf="error">Error: {{error}}</div>

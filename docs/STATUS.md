@@ -17,3 +17,9 @@ main
 ## How to run
 - SQL: docker compose -f infra/docker-compose.yml up -d
 - API: cd services/CornerShopApi && dotnet run
+
+## Day 3 (Angular)
+- [x] Angular storefront created
+- [x] Routing added (Home, Products, Product Details, Cart)
+- [x] Products fetched from .NET API
+- [x] Cart implemented using localStorage

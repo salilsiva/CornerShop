@@ -1,0 +1,6 @@
+.page {padding: 16px}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+}

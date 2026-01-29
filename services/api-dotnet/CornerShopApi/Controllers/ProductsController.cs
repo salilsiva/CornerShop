@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 [ApiController]
-[Route("api/product")]
+[Route("api/products")]
 public class ProductsController : ControllerBase
 {
     private readonly CSDbContext _db;

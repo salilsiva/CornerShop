@@ -1,0 +1,30 @@
+.page{padding: 16px;}
+.list{
+    margin-top: 12px; 
+    display: grid;
+    gap: 12px;
+}
+.row{
+    display: grid;
+    grid-template-columns: 90px 1fr 120px 120px;
+    gap: 12px;
+    align-items: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 12px;
+    background: white;
+}
+
+img{
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.name{font-weight: 800;}
+.total{
+    text-align: right;
+    font-weight: 900;
+    font-size: 18px;
+    margin-top: 8px;
+}
