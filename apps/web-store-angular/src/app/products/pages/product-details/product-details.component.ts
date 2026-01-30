@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../models/product';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { ProductsService } from '../../../services/products/products.service';
-import { CartService } from '../../../services/cart.service';
+import { CartService } from '../../../services/cart/cart.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -28,7 +28,9 @@ export class ProductDetailsComponent implements OnInit{
 
   addToCart(){
     if(!this.product) return;
-    this.cartService.addToCart(this.product, 1);
-    alert('Added to Cart');
+    this.cartService.addItem(this.product.id, 1).subscribe({
+      next: ()=> alert("Added to cart!"),
+      error:()=> alert("Please login to add items to cart")
+    });
   }
 }

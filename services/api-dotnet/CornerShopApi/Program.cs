@@ -1,4 +1,12 @@
+
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using CornerShopApi.Data;
+using CornerShopApi.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +22,42 @@ builder.Services.AddDbContext<CSDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+builder.Services.AddIdentityCore<ApplicationUser>(options =>
+{
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequireDigit = true;
+    options.User.RequireUniqueEmail = true;
+})
+    .AddEntityFrameworkStores<CSDbContext>()
+    .AddSignInManager()
+    .AddDefaultTokenProviders();
+
+var jwtSection = builder.Configuration.GetSection("Jwt");
+var jwtKey = jwtSection["Key"]!;
+var jwtIssuer = jwtSection["Issuer"]!;
+var jwtAudience = jwtSection["Audience"]!;
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwtIssuer,
+            ValidAudience = jwtAudience,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+        };
+    });
+
+
+builder.Services.AddScoped<JwtTokenService>();
+builder.Services.AddAuthorization();
 
 builder.Services.AddControllers();
 
@@ -31,6 +75,10 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 app.UseCors("AllowFrontendDev");
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.MapControllers();
 
 // Configure the HTTP request pipeline.

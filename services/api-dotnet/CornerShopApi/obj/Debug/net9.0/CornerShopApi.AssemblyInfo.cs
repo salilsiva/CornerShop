@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CornerShopApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0acb5f2842d248f46f7affa3e9437da01dc57c3d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+454682ce3a2088d18fd7de51c25ebb78c0ff556f")]
 [assembly: System.Reflection.AssemblyProductAttribute("CornerShopApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CornerShopApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

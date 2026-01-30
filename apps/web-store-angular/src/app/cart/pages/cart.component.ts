@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService, CartItem } from '../../services/cart.service';
+import { CartService, CartItem } from '../../services/cart/cart.service';
 import { RouterLink } from "@angular/router";
 import { CommonModule } from '@angular/common';
 
@@ -14,12 +14,21 @@ export class CartComponent implements OnInit{
   constructor(private cartService: CartService){}
 
   ngOnInit(): void {
-    this.items = this.cartService.getCart();
+    this.refresh();
+  }
+
+  refresh(){
+    this.cartService.getMyCart().subscribe({
+      next: (data)=> this.items = data,
+      error: () => this.items = []
+    });
   }
 
   updateQty(productId: number, qty: number){
-    this.cartService.updateQty(productId, qty);
-    this.items = this.cartService.getCart();
+    this.cartService.updateQty(productId, qty).subscribe({
+      next: ()=> this.refresh()
+    });
+    
   }
 
   total() : number{

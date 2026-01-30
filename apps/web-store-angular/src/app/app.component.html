@@ -4,6 +4,15 @@
   <nav class="nav">
     <a routerLink="/products">Products</a>
     <a routerLink="/cart">Cart</a>
+
+    <span class="nav" *ngIf="!auth.isLoggedIn()">
+      <a routerLink="/login">Login</a>
+      <a routerLink="/register">Register</a>
+    </span>
+
+    <span class="nav" *ngIf="auth.isLoggedIn()">
+      <a href="#" (click)="logout(); $event.preventDefault()">Logout</a>
+    </span>
   </nav>
 </header>
 <router-outlet></router-outlet>

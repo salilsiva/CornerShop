@@ -1,0 +1,15 @@
+<div class="page">
+    <h2>Register</h2>
+
+    <label>Email</label>
+    <input [(ngModel)]="email" type="email"/>
+
+    <label>Password</label>
+    <input [(ngModel)] ="password" type="password"/>
+
+    <button (click)="register()">Create account</button>
+
+    <p *ngIf="error">{{error}}</p>
+</div>
+
+
