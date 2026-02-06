@@ -27,10 +27,18 @@ export class AuthService {
      .pipe(tap(res=> localStorage.setItem(KEY, res.token)));
   }
 
-  login(email: string, password: string){
+  login(email: string, password: string, rememberMe: boolean){
     return this.http.post<AuthResponse>(`${environment.apiBaseUrl}/api/auth/login`, {email, password})
-      .pipe(tap(res => localStorage.setItem(KEY, res.token)));
+      .pipe(tap(res => {
+        if(rememberMe){
+          localStorage.setItem(KEY, res.token);
+        }else{
+          sessionStorage.setItem(KEY, res.token);
+        }
+      })
+    );
   }
+
 
   logout(){
     localStorage.removeItem(KEY);

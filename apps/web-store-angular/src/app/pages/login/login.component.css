@@ -1,0 +1,204 @@
+.auth{
+    min-height: calc(100vh - 70px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    align-items: stretch;
+}
+
+.auth__card{
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 18px;
+    padding: 22px;
+    max-width: 480px;
+    width: 100%;
+    margin: 40px auto;
+}
+
+.brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.brand__logo {
+  background-image: url("/images/cornershop-banner.jpg");
+  background-color: #111;      /* ✅ don’t use background: */
+  background-size: cover;
+  background-position: center;
+
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: #fff;
+}
+
+.brand__name {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #111;
+}
+
+.muted {
+  margin: 8px 0 18px 0;
+  color: #666;
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+}
+
+label span {
+  display: block;
+  font-weight: 800;
+  font-size: 12px;
+  margin-bottom: 6px;
+  color: #222;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+  width: 80%;
+  padding: 12px 12px;
+  border: 1px solid #e2e2e2;
+  border-radius: 12px;
+  outline: none;
+  font-size: 14px;
+}
+
+input:focus {
+  border-color: #111;
+}
+
+.pw {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.pw__toggle {
+  border: 1px solid #e2e2e2;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #333;
+}
+
+.link {
+  text-decoration: none;
+  font-weight: 800;
+  color: #111;
+}
+
+.field-error {
+  color: #c00;
+  font-weight: 700;
+  font-size: 12px;
+  margin-top: -6px;
+}
+
+.error {
+  padding: 10px 12px;
+  border: 1px solid #ffd1d1;
+  background: #fff5f5;
+  border-radius: 12px;
+  color: #b00020;
+  font-weight: 800;
+}
+
+.btn {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #111;
+  background: grey;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.small {
+  margin: 8px 0 0 0;
+  color: #666;
+  font-size: 13px;
+}
+
+/* Right panel */
+.auth__side {
+  border-radius: 18px;
+  border: 1px solid #eee;
+  margin: 40px auto;
+  width: 100%;
+  max-width: 520px;
+  background: linear-gradient(180deg, #333, #555);
+  color: #fff;
+  display: grid;
+  align-items: center;
+  padding: 22px;
+}
+
+.side__content h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.small {
+  margin: 8px 0 0 0;
+  color: #666;
+  font-size: 13px;
+}
+
+/* Right panel */
+.auth__side {
+  border-radius: 18px;
+  border: 1px solid #eee;
+  margin: 40px auto;
+  width: 50%;
+  max-width: 520px;
+  background: linear-gradient(180deg, #555, #666);
+  color: #fff;
+  display: grid;
+  align-items: center;
+  padding: 22px;
+}
+
+.side__content h2 {
+  margin: 0;
+  font-size: 28px;
+}
+

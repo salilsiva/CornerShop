@@ -1,18 +1,22 @@
-<header class="header">
-  <a routerLink="/" class="brand">CornerShop</a>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a class="logo"routerLink="/home" routerLinkActive="active">CornerShop</a>
 
-  <nav class="nav">
-    <a routerLink="/products">Products</a>
-    <a routerLink="/cart">Cart</a>
+    <nav class="nav">
+      <a routerLink="/products" routerLinkActive="=active">Products</a>
+      <a routerLink="/cart" routerLinkActive="=active">Cart</a>
+    </nav>
 
     <span class="nav" *ngIf="!auth.isLoggedIn()">
       <a routerLink="/login">Login</a>
       <a routerLink="/register">Register</a>
     </span>
-
     <span class="nav" *ngIf="auth.isLoggedIn()">
       <a href="#" (click)="logout(); $event.preventDefault()">Logout</a>
     </span>
-  </nav>
+  </div>
+
 </header>
-<router-outlet></router-outlet>
+<main class="page">
+  <router-outlet></router-outlet>
+</main>

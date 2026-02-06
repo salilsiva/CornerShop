@@ -1,1 +1,54 @@
-<p>home works!</p>
+<section class="hero">
+    <div class="hero-left">
+        <p class="pill">Corner Shop</p>
+        <h1>Computers & peripherals, delivered fast.</h1>
+        <p class="sub">
+            Browse products, add to cart and checkout securely with Stripe.
+        </p>
+
+        <div class="hero__actions">
+            <a class="btn primary" routerLink="/products">Browse Products</a>
+            <a class="btn ghost" routerLink="/cart">View Cart</a>
+        </div>
+    </div>
+
+    <div class="hero__right">
+        <div class="mini">
+            <div class="mini__title">Today's Picks</div>
+            <div class="mini__row" *ngFor="let p of featured | slice:0:5">
+                <div class="dot"></div>
+                <div class="min__name">{{p.name}}</div>
+                <div class="mini__price">£{{p.price | number:'1.2-2'}}</div>
+            </div>
+            <a class="mini__link" routerLink="/products">See all → </a>
+        </div>
+    </div>
+</section>
+
+<section class=section>
+    <div class="head">
+        <h2>Featured products</h2>
+        <a routerLink="/products">Browse all →</a>        
+    </div>
+
+    <div *ngIf="loading" class="muted">Loading Products</div>
+    <div *ngIf="error" class="error">{{error}}</div>
+
+    <div class="scroll" *ngIf="!loading && featured.length">
+        <div class="card" *ngFor="let p of featured | slice:0:10">
+            <div class="card__img">
+                <img [src] = "p.imageUrl || fallbackImage" alt="Cornershop Banner"/>
+            </div>
+            <div class="card__body">
+                <div class="name">{{p.name}}</div>
+                <div class="desc">{{p.description ||'Great value, popular choice'}}</div>
+            <div class="row">
+                <div class="price">{{p.price}}</div>
+                <button class="add" (click)="addToCart()">add</button>
+            </div>
+            <a class="details" [routerLink]="['/products',p.id]">View Details</a>
+            </div>
+        </div>
+    </div>
+</section>
+

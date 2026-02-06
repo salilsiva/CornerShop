@@ -34,4 +34,8 @@ export class CartService {
     return this.http.delete(`${environment.apiBaseUrl}/api/cart/items/{productId}`);
   }
 
+  getCount(){
+    return this.http.get(`${environment.apiBaseUrl}/api.cart.count`);
+  }
+
 }
