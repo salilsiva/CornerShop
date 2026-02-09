@@ -2,13 +2,13 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background: #fff;
+    background: #b7dce6;
     border-bottom: 1px solid #eee;
+    height: 70px;
 }
 
 .topbar__inner{
-    max-width: 1100px;
-    margin: 0 auto;
+    height: 100%;
     padding: 14px 18px;
     display: flex;
     align-items: center;
@@ -21,7 +21,18 @@
     text-decoration: none;
     color: #111;
     letter-spacing: 0.2px;
+    padding: 0;
+    background: transparent;
 }
+
+.logo img {
+  height: 46px;
+  width: auto;
+  display: block;
+  mix-blend-mode: multiply; /* blends light edges */
+  filter: saturate(1.05) contrast(1.05);
+}
+
 .nav{
     display: flex;
     align-items: center;

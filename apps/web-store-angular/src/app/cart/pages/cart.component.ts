@@ -34,4 +34,8 @@ export class CartComponent implements OnInit{
   total() : number{
     return this.items.reduce((sum, x) => sum + x.price * x.quantity, 0);
   }
+
+  checkout(){
+    
+  }
 }

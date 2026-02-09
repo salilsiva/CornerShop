@@ -14,12 +14,12 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  get token(): string | null{
-    return localStorage.getItem(KEY);
+  getToken(): string | null{
+    return localStorage.getItem(KEY)?? sessionStorage.getItem(KEY);
   }
 
   isLoggedIn(): boolean{
-    return !!this.token;
+    return !!(localStorage.getItem(KEY) ?? sessionStorage.getItem(KEY));
   }
 
   register(email: string, password: string){
@@ -42,5 +42,6 @@ export class AuthService {
 
   logout(){
     localStorage.removeItem(KEY);
+    sessionStorage.removeItem(KEY);
   }
 }

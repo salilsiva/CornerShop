@@ -1,15 +1,30 @@
-<div class="page">
-    <h2>Register</h2>
 
-    <label>Email</label>
-    <input [(ngModel)]="email" type="email"/>
-
-    <label>Password</label>
-    <input [(ngModel)] ="password" type="password"/>
-
-    <button (click)="register()">Create account</button>
-
-    <p *ngIf="error">{{error}}</p>
-</div>
-
-
+<app-auth-layout>
+   <div class="page">
+      <h2>Register</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="form">
+      <label> 
+      <span>Email</span> <input type="email" formControlName="email" placeholder="you@example.com">
+      </label> 
+      <div class="field-error" *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid">
+         Enter a valid email. 
+         <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required
+         </div>
+      </div>
+      <label>
+         <span>Password</span> 
+         <div class="pw"> <input [type]="showPassword? 'text' : 'password'" formControlName="password" placeholder="............"/>
+             <button type="button" class="pw_toggle" (click)="showPassword = !showPassword"> 
+                {{showPassword ? 'Hide' : 'Show'}}</button> </div>
+      </label>
+      <div class="field-error" *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"> 
+        <div *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</div>
+        <div *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.</div>
+         </div>
+         
+      <div class="error" *ngIf="error">{{error}}</div>
+      <button class="btn" type = "submit" [disabled]="loading"> {{loading? 'Signing in...':'Register'}} 
+      </button> 
+      </form> 
+   </div>
+</app-auth-layout>

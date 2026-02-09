@@ -1,65 +1,47 @@
-<div class="auth">
-    <div class="auth__card">
-        <div class="brand">
-            <div class="brand__logo">
-                <div class="brand__name">CornerShop</div>
-            </div>
-        </div>
+<app-auth-layout>
+    <div class="page">
+        <h2>Sign in</h2>
 
-        <h1>Welcome back</h1>
-        <p class="muted">Use your email and password to sign in</p>
-
-        <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="form">
             <label>
                 <span>Email</span>
                 <input type="email" formControlName="email" placeholder="you@example.com">
             </label>
-            <div class="field-error" *ngIf="touchedInvalid('email')">
+            <div class="field-error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
                 Enter a valid email.
+                <div *ngIf="loginForm.get('email')?.errors?.['required']">Email is required
+                </div>
             </div>
             <label>
                 <span>Password</span>
-                <div class="pw">
-                    <input [type]="showPassword? 'text' : 'password'"
-                        formControlName="password" placeholder="............"/>
+                <div class="pw"> <input [type]="showPassword? 'text' : 'password'" formControlName="password"
+                        placeholder="............" />
                     <button type="button" class="pw_toggle" (click)="showPassword = !showPassword">
                         {{showPassword ? 'Hide' : 'Show'}}</button>
                 </div>
             </label>
-            <div class="field-error" *ngIf="touchedInvalid('password')">
-                Password must be at least 6 characters.
+            <div class="field-error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+                <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</div>
+                <div *ngIf="loginForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters.
+                </div>
             </div>
 
             <div class="row">
                 <label class="remember">
-                    <input type="checkbox" formControlName="rememberMe"/> Remember me
+                    <input type="checkbox" formControlName="rememberMe" /> Remember me
                 </label>
             </div>
 
             <a class="link" href="#" (click)="$event.preventDefault()">Forgot Password?</a>
-            <div class="error" *ngIf="error">{{error}}</div> 
-            <button class="btn" type = "submit" [disabled]="loading">
+            <div class="error" *ngIf="error">{{error}}</div>
+            <button class="btn" type="submit" [disabled]="loading">
                 {{loading? 'Signing in...':'Sign in'}}
             </button>
-            
+
             <p class="small">
                 Don't have an account?
                 <a class="link" routerLink="/register">create one</a>
             </p>
         </form>
-        <ng-content></ng-content>
     </div>
-
-    <aside class="auth__hero">
-        <div class="hero__overlay">
-            <h2>Shop smarter.</h2>
-            <p>Computers and parts with a smooth cart, secure checkout and faster delivery</p>
-        </div>
-
-        <div class="hero__bullets">
-            <div class="b">🔒 Secure login & payments</div>
-        <div class="b">🛒 Cart saved automatically</div>
-        <div class="b">⚡ Fast browsing</div>
-        </div>
-    </aside>
-</div>
+</app-auth-layout>

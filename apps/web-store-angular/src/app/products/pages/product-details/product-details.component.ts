@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../models/product';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProductsService } from '../../../services/products/products.service';
 import { CartService } from '../../../services/cart/cart.service';
 import { CommonModule } from '@angular/common';
@@ -16,7 +16,10 @@ export class ProductDetailsComponent implements OnInit{
   loading = true;
   error: string | null = null;
 
-  constructor(private route: ActivatedRoute, private ProductsService: ProductsService, private cartService: CartService){}
+  constructor(private route: ActivatedRoute, 
+    private ProductsService: ProductsService, 
+    private cartService: CartService,
+    private router: Router){}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
@@ -29,7 +32,9 @@ export class ProductDetailsComponent implements OnInit{
   addToCart(){
     if(!this.product) return;
     this.cartService.addItem(this.product.id, 1).subscribe({
-      next: ()=> alert("Added to cart!"),
+      next: ()=> {console.log("item added to cart"),
+        this.router.navigate(["/cart"])
+      },
       error:()=> alert("Please login to add items to cart")
     });
   }

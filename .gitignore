@@ -1,1 +1,63 @@
 .env
+############################
+# OS / Editor
+############################
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.log
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+############################
+# Environment / Secrets
+############################
+.env.*
+secrets.json
+
+############
+############################
+# .NET
+############################
+**/bin/
+**/obj/
+*.dll
+*.exe
+*.pdb
+
+############################
+# NuGet
+############################
+**/packages/
+*.nupkg
+
+############################
+# Angular / Node
+############################
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+.angular/
+.cache/
+
+############################
+# Angular builds
+############################
+**/dist/
+**/.angular/
+
+############################
+# Docker
+############################
+docker-data/
+**/*.tar

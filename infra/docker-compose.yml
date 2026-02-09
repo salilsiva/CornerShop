@@ -3,12 +3,31 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: cornershop-sql
     environment:
-      - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=${SA_PASSWORD}
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
     ports:
       - "1433:1433"
     volumes:
       - cornershop_sql_data:/var/opt/mssql
+
+  api:
+    build:
+      context: ..
+      dockerfile: services/api-dotnet/CornerShopApi/Dockerfile
+    container_name: cornershop-api
+    depends_on:
+      - sqlserver
+    environment:
+      ASPNETCORE_URLS: http://+:5093
+      ConnectionStrings__DefaultConnection: ${DB_CONNECTION_STRING}
+      Stripe__SecretKey: ${STRIPE_SECRET_KEY}
+      Stripe__WebhookSecret: ${STRIPE_WEBHOOK_SECRET}
+      Jwt__Key: ${JWT_KEY}
+      Jwt__Issuer: CornerShopApi
+      Jwt__Audience: CornerShopApiUsers
+      Jwt__ExpiresMinutes: "120"
+    ports:
+      - "5093:5093"
 
 volumes:
   cornershop_sql_data:

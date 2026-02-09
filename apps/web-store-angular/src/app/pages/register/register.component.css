@@ -1,0 +1,87 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Labels & inputs */
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+}
+
+input {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6d28d9;
+}
+
+/* Password field with toggle */
+.pw {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pw input {
+  flex: 1;
+}
+
+.pw_toggle {
+  border: none;
+  background: transparent;
+  color: #6d28d9;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 15px;
+  background: #6d28d9;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+.btn:disabled {
+  background: #c4b5fd;
+  cursor: not-allowed;
+}
+
+/* Errors */
+.field-error {
+  color: #dc2626;
+  font-size: 13px;
+}
+
+.error {
+  margin-top: 8px;
+  color: #dc2626;
+  font-weight: 600;
+  text-align: center;
+}
