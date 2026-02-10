@@ -12,10 +12,15 @@ img{
     border-radius: 12px;
 }
 
-button{
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    cursor: pointer;
-
+.btn{
+ margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  font-size: 15px;
+  background: #6d28d9;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
 }

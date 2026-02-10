@@ -1,18 +1,17 @@
-:host{
-    display: block;
-    height: calc(100vh - 70px);
-     overflow: hidden;
+
+:host {
+  display: block;
+  overflow: hidden;
 }
 
 .auth {
-  position: relative;
   display: grid;
   grid-template-columns: 520px 1fr;
-  min-height: calc(100vh - 70px); /* adjust if your topbar height differs */
+  height: calc(100vh - 70px); ;
   gap: 18px;
   align-items: center;
   justify-content: center;
-  padding: 28px, 28px, 40px;
+  padding: 5px 18px 24px;
   background-position: center top;
 
   background: 
@@ -31,18 +30,15 @@
     backdrop-filter: blur(2px);
 
 }
-.brand__logo {
-  background-image: url("/images/cornershop-banner.jpg");
-  background-size: cover;
-  background-position: center;
 
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-weight: 900;
-  color: #fff;
+.brand__logo {
+    height: 30px;
+    width: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-weight: 900;
+    color: #fff;
 }
 
 /* Form card */
@@ -50,7 +46,7 @@
   position: relative;
   background: white; 
   border-radius: 20px; 
-  padding: 32px; 
+  padding: 16px 20px;
   box-shadow: 0 10px 25px rgba(0,0,0.06), 0 1px 3px rgba(0,0,0,.05); 
   max-width: 480px; 
   width: 100%; 
@@ -64,11 +60,6 @@
   z-index: 2;
 }
 
-.auth__card button{
-    background: linear-gradient(135deg, #6d28d9, #7c3aed);
-    color: #fff;
-    height: 44px;
-}
 .auth__card input {
   width: 100%;
   padding: 12px 14px;
@@ -92,6 +83,26 @@
     border: none; 
 }
 
+/* Enabled (form valid) */
+.auth__card .btn:not(:disabled) {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Hover only when enabled */
+.auth__card .btn:not(:disabled):hover {
+  filter: brightness(1.05);
+}
+
+.auth__card .btn {
+    background: #d1d5db;
+    color: #6b7280;
+    cursor: not-allowed;
+    transition: background 0.2 ease, filter 0.2s ease;
+}
+
+
 .auth__card button[type="submit"]:hover {
   filter: brightness(1.05);
 }
@@ -99,7 +110,7 @@
 /* Right hero with your JPG */
 .auth__hero {
   position: relative;
-  height: 400px;
+  height: 340px;
   border-radius: 22px;
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,0.35);
@@ -109,15 +120,12 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* 👈 move content to top */
-  padding: 60px;
+  padding: 40px;
 }
 
 .hero__overlay {
   height: 100%;
   padding: 28px;
-  
-  
-  
 }
 
 .hero__overlay h2 {

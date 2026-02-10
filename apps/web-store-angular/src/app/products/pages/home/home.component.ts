@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterModule, RouterOutlet } from "@angular/router";
 import { ProductsService } from '../../../services/products/products.service';
 import { Product } from '../../../models/product';
+import { CartService } from '../../../services/cart/cart.service';
 
 
 
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit{
   featured : Product[] = [];
   error = '';
   fallbackImage = "/images/cornershop-banner.jpg";
-  constructor(private productSvc: ProductsService){
+  constructor(private productSvc: ProductsService, private cart: CartService){
     
   }
 
@@ -28,7 +29,9 @@ export class HomeComponent implements OnInit{
       error:(err) => console.error(err)
     });
   }
-  addToCart(){
 
+  addToCart(p: Product){
+    this.cart.addItem(p.id, 1);
   }
+
 }

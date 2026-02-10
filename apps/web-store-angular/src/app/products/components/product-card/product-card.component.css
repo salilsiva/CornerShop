@@ -11,6 +11,19 @@ img{
     object-fit: contain;
 }
 
+.view{
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px;
+  text-decoration: none;
+  font-weight: 300;
+  color: Black;
+  border: 1px solid #ebeac1;;
+  background: #ebeac1;
+  border-radius: 12px;
+
+}
+
 .body{
     padding: 12px;
 }

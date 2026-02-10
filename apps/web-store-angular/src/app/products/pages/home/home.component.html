@@ -15,7 +15,7 @@
     <div class="hero__right">
         <div class="mini">
             <div class="mini__title">Today's Picks</div>
-            <div class="mini__row" *ngFor="let p of featured | slice:0:5">
+            <div class="mini__row" *ngFor="let p of featured | slice:0:8">
                 <div class="dot"></div>
                 <div class="min__name">{{p.name}}</div>
                 <div class="mini__price">£{{p.price | number:'1.2-2'}}</div>

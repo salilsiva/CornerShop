@@ -7,6 +7,7 @@ import { CartComponent } from './cart/pages/cart.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { authGuard } from './pages/auth.guard';
+import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 
 
 export const routes: Routes = [
@@ -17,5 +18,6 @@ export const routes: Routes = [
     {path: 'cart', canActivate: [authGuard], component: CartComponent},
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
+    {path: 'forgot-password', component: ForgotPasswordComponent},
     {path: '**', redirectTo: ''},
 ];

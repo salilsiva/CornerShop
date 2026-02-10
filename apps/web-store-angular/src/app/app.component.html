@@ -2,11 +2,11 @@
   <div class="topbar__inner">
     <a class="logo"routerLink="/home">
         <img src="/images/cornershop-logo.jpg" alt="CornerShop"></a>
-        
+
     <nav class="nav">
       <a routerLink="/products" routerLinkActive="=active">Products</a>
       <a routerLink="/cart" *ngIf="auth.isLoggedIn()" routerLinkActive="active" class="pill">
-            Cart <span class="badge">{{cartCount}}</span>
+            Cart <span class="badge" *ngIf="cartCount > 0">{{cartCount}}</span>
 </a>
     </nav>
 
