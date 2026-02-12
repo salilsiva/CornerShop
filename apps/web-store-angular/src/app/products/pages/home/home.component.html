@@ -44,7 +44,7 @@
                 <div class="desc">{{p.description ||'Great value, popular choice'}}</div>
             <div class="row">
                 <div class="price">{{p.price}}</div>
-                <button class="add" (click)="addToCart()">add</button>
+                <button class="add" (click)="addToCart(p)">add</button>
             </div>
             <a class="details" [routerLink]="['/products',p.id]">View Details</a>
             </div>

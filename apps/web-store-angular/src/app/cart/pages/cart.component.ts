@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService, CartItem } from '../../services/cart/cart.service';
 import { RouterLink } from "@angular/router";
 import { CommonModule } from '@angular/common';
+import { CheckoutService } from '../../services/cart/checkout.service';
 
 @Component({
   selector: 'app-cart',
@@ -11,7 +12,8 @@ import { CommonModule } from '@angular/common';
 })
 export class CartComponent implements OnInit{
   items: CartItem[] = [];
-  constructor(private cartService: CartService){}
+  quantity = 1;
+  constructor(private cartService: CartService, private checkoutService: CheckoutService){}
 
   ngOnInit(): void {
     this.refresh();
@@ -36,6 +38,6 @@ export class CartComponent implements OnInit{
   }
 
   checkout(){
-    
+    this.checkoutService.startCheckout(this.quantity);
   }
 }

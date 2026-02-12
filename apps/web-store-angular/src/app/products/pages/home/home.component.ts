@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterModule, RouterOutlet } from "@angular/router";
+import { RouterLink, RouterModule, Router, Route } from "@angular/router";
 import { ProductsService } from '../../../services/products/products.service';
 import { Product } from '../../../models/product';
 import { CartService } from '../../../services/cart/cart.service';
+import { LoggerService } from '../../../core/logger.service';
 
 
 
@@ -19,7 +20,10 @@ export class HomeComponent implements OnInit{
   featured : Product[] = [];
   error = '';
   fallbackImage = "/images/cornershop-banner.jpg";
-  constructor(private productSvc: ProductsService, private cart: CartService){
+  constructor(private productSvc: ProductsService, 
+    private cart: CartService, 
+    private router: Router,
+    private logger: LoggerService){
     
   }
 
@@ -31,7 +35,13 @@ export class HomeComponent implements OnInit{
   }
 
   addToCart(p: Product){
-    this.cart.addItem(p.id, 1);
+    this.logger.info(`Home - addToCart called with ${p.id}`);
+     this.cart.addItem(p.id, 1).subscribe({
+      next: ()=> {console.log("item added to cart"),
+        this.router.navigate(["/cart"])
+      },
+      error:()=> alert("Please login to add items to cart")
+    });
   }
 
 }

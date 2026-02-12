@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { environment } from '../../../../../environment';
+import { LoggerService } from '../../core/logger.service';
 
 
 export type CartItem={
@@ -19,7 +20,7 @@ export class CartService {
   private cartItems: CartItem[] = [];
   private cartCountSubject = new BehaviorSubject<number>(0);
   cartCount$ = this.cartCountSubject.asObservable();
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private logger: LoggerService) { }
 
   getItems(){
     return this.cartItems;
@@ -35,6 +36,7 @@ export class CartService {
   }
 
   addItem(productId: number, quantity: number){
+    this.logger.info(`CartService: addItem before call has ${productId}`);
     return this.http.post(`${environment.apiBaseUrl}/api/cart/items`, {productId, quantity});
     this.updateCount();
   }
