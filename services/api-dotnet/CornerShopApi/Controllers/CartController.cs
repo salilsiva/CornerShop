@@ -3,7 +3,7 @@ using CornerShopApi.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using CornerShopApi.Data.Dtos.Cart;
+using Dtos.Cart;
 using Microsoft.IdentityModel.Tokens;
 
 [ApiController]

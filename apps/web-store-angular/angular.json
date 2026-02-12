@@ -62,7 +62,8 @@
               "buildTarget": "web-store-angular:build:production"
             },
             "development": {
-              "buildTarget": "web-store-angular:build:development"
+              "buildTarget": "web-store-angular:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

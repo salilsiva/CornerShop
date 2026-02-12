@@ -18,7 +18,9 @@ services:
     depends_on:
       - sqlserver
     environment:
+      ASPNETCORE_ENVIRONMENT: Development
       ASPNETCORE_URLS: http://+:5093
+      Frontend_BaseUrl: http://localhost:4200
       ConnectionStrings__DefaultConnection: ${DB_CONNECTION_STRING}
       Stripe__SecretKey: ${STRIPE_SECRET_KEY}
       Stripe__WebhookSecret: ${STRIPE_WEBHOOK_SECRET}

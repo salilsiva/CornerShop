@@ -1,3 +1,3 @@
 
-namespace CornerShopApi.Data.Dtos.Cart;
+namespace Dtos.Cart;
 public record AddCartItemRequest(int ProductId, int Quantity);

@@ -12,7 +12,7 @@ import { CheckoutService } from '../../services/cart/checkout.service';
 })
 export class CartComponent implements OnInit{
   items: CartItem[] = [];
-  quantity = 1;
+  quantity = 1;  
   constructor(private cartService: CartService, private checkoutService: CheckoutService){}
 
   ngOnInit(): void {
@@ -37,7 +37,9 @@ export class CartComponent implements OnInit{
     return this.items.reduce((sum, x) => sum + x.price * x.quantity, 0);
   }
 
-  checkout(){
-    this.checkoutService.startCheckout(this.quantity);
+  async checkout(){ 
+    console.log("Car: checkout called");
+    await this.checkoutService.startCheckout(this.items);
   }
+
 }

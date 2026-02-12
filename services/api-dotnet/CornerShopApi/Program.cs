@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using CornerShopApi.Data;
 using CornerShopApi.Models;
+using CornerShopApi.Controllers;
 
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,7 +61,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped<JwtTokenService>();
 builder.Services.AddAuthorization();
 
+//Stripe
+builder.Services.Configure<StripeOptions>(builder.Configuration.GetSection("Stripe"));
+// set Stripe api key at startup from env/config
+var stripeSecretKey = builder.Configuration["Stripe:SecretKey"];
+if(string.IsNullOrWhiteSpace(stripeSecretKey))
+    throw new InvalidOperationException("Stripe:SecretKey is missing");
+
+StripeConfiguration.ApiKey = stripeSecretKey;
+
+
 builder.Services.AddControllers();
+
 
 //Enable CORS
 builder.Services.AddCors(options =>
