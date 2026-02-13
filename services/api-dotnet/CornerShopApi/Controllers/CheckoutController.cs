@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Stripe.Checkout;
 using Dtos.Cart;
 using CornerShopApi.Data;
+using Stripe;
 
 [ApiController]
 [Route("payments")]
@@ -89,4 +90,37 @@ public class CheckoutController : ControllerBase
 
         return Ok(new {url = session.Url});
     }
+
+    [HttpGet("checkout-session/{sessionId}")]
+    public async Task<IActionResult> GetCheckoutSession([FromRoute] string sessionId)
+    {
+        var service = new SessionService();
+        try
+        {   
+            var session = await service.GetAsync(sessionId);
+
+            var status = session.PaymentStatus switch
+            {
+                "paid" => "paid",
+                "unpaid" => "unpaid",
+                _ => "pending"
+            };
+
+            return Ok(new
+            {
+                status,
+                amountTotal = session.AmountTotal,
+                currency = session.Currency,
+                customerEmail = session.CustomerDetails?.Email,
+                paymentIntentId = session.PaymentIntentId,
+                receiptUrl = (string?)null
+            });
+        }
+        catch (StripeException)
+        {
+            return Ok(new{status = "not_found"});
+        }
+    }
+
+
 }

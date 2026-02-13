@@ -8,6 +8,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { authGuard } from './pages/auth.guard';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
+import { PaymentSuccessComponent } from './payment/payment-success/payment-success.component';
+import { PaymentFailureComponent } from './payment/payment-failure/payment-failure.component';
 
 
 export const routes: Routes = [
@@ -19,5 +21,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'forgot-password', component: ForgotPasswordComponent},
+    {path: 'payment-success', component: PaymentSuccessComponent},
+    {path: 'payment-failure', component: PaymentFailureComponent},
     {path: '**', redirectTo: ''},
 ];

@@ -1,0 +1,59 @@
+<div class="page">
+  <div class="card" *ngIf="!loading && data?.status === 'paid' && data as d">
+    <div class="icon success" aria-hidden="true">
+      <span class="tick">✓</span>
+    </div>
+
+    <h1 class="title">Payment successful</h1>
+    <p class="subtitle">Thanks! Your payment has been processed.</p>
+
+    <div class="details" *ngIf="d.amountTotal != null">
+      <div class="row">
+        <span class="label">Amount</span>
+        <span class="value">{{ formatAmount(d.amountTotal, d.currency) }}</span>
+      </div>
+
+      <div class="row" *ngIf="d.customerEmail">
+        <span class="label">Receipt</span>
+        <span class="value">{{ d.customerEmail }}</span>
+      </div>
+
+      <div class="row" *ngIf="d.paymentIntentId">
+        <span class="label">Reference</span>
+        <span class="value mono">{{ d.paymentIntentId }}</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a class="btn primary" routerLink="/orders">View orders</a>
+      <a class="btn" routerLink="/">Go to home</a>
+    </div>
+
+    <div class="fineprint">
+      <span *ngIf="d.receiptUrl">
+        <a class="link" [href]="d.receiptUrl" target="_blank">Open Stripe receipt</a>
+      </span>
+      <span *ngIf="!d.receiptUrl">
+        If you don’t see an email receipt, check your spam folder.
+      </span>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div class="card" *ngIf="loading">
+    <div class="spinner" aria-hidden="true"></div>
+    <h1 class="title">Confirming your payment…</h1>
+    <p class="subtitle">This usually takes a few seconds.</p>
+  </div>
+
+  <!-- Pending / Failed (optional) -->
+  <div class="card" *ngIf="!loading && data?.status !== 'paid'">
+    <div class="icon warn" aria-hidden="true">!</div>
+    <h1 class="title">We’re still confirming</h1>
+    <p class="subtitle">If you were charged, it may take a moment to update.</p>
+    <div class="actions">
+      <a class="btn primary" routerLink="/cart">Back to cart</a>
+      <a class="btn" routerLink="/">Go to home</a>
+    </div>
+  </div>
+</div>
