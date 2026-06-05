@@ -31,5 +31,15 @@ services:
     ports:
       - "5093:5093"
 
+  frontend:
+    build:
+      context: ../apps/web-store-angular
+      dockerfile: Dockerfile
+    container_name: angular-ui
+    ports:
+      - "4200:4200"
+    depends_on:
+      - api
+
 volumes:
   cornershop_sql_data:
