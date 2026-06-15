@@ -36,33 +36,17 @@ services:
       Jwt__ExpiresMinutes: "120"
     ports:
       - "5093:5093"
-<<<<<<< HEAD
   
-=======
 
->>>>>>> 40a0df5d5595e752474779c051428989b1308d28
   frontend:
     build:
       context: ../apps/web-store-angular
       dockerfile: Dockerfile
-<<<<<<< HEAD
-    container_name: cornershop-web
-    depends_on:
-      - api
-    ports:
-      - "4200:4200"
-    environment:
-      API_BAS_URL: "http://api/5093"
-    volumes:
-      - ../services/web-store-angular:/app
-      - /app/node_modules  
-=======
     container_name: angular-ui
     ports:
       - "4200:4200"
     depends_on:
       - api
 
->>>>>>> 40a0df5d5595e752474779c051428989b1308d28
 volumes:
   cornershop_sql_data:
