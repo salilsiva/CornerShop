@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../../../environment';
+import { environment } from '../../environments/environment';
 import { tap } from 'rxjs';
 
 type AuthResponse = {token: string; email: string};
@@ -23,8 +23,8 @@ export class AuthService {
   }
 
   register(email: string, password: string){
-    return this.http.post<AuthResponse>(`${environment.apiBaseUrl}/api/auth/register`, {email, password})
-     .pipe(tap(res=> localStorage.setItem(KEY, res.token)));
+    return this.http.post<AuthResponse>(`${environment.apiBaseUrl}/api/auth/register`, {email, password});
+     //.pipe(tap(res=> localStorage.setItem(KEY, res.token)));
   }
 
   login(email: string, password: string, rememberMe: boolean){
@@ -32,8 +32,10 @@ export class AuthService {
       .pipe(tap(res => {
         if(rememberMe){
           localStorage.setItem(KEY, res.token);
+          localStorage.setItem('username', res.email);
         }else{
           sessionStorage.setItem(KEY, res.token);
+          sessionStorage.setItem('username', res.email);
         }
       })
     );

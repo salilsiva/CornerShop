@@ -14,8 +14,12 @@
       <a routerLink="/login">Login</a>
       <a routerLink="/register">Register</a>
     </span>
-    <span class="nav" *ngIf="auth.isLoggedIn()">
-      <a href="#" (click)="logout(); $event.preventDefault()">Logout</a>
+    <span class="user-menu" *ngIf="auth.isLoggedIn()">
+        <span class="user-label">👤 Hi, {{displayName}} ▼</span>
+         <div class="dropdown">
+            <a href="#" (click)="logout(); $event.preventDefault()">Logout</a>
+         </div>
+         
     </span>
   </div>
 

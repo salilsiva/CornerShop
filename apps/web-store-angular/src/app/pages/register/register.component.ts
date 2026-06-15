@@ -39,7 +39,7 @@ export class RegisterComponent {
     }
     this.error = null;
     this.auth.register(email, password).subscribe({
-      next: ()=> this.router.navigateByUrl('/products'),
+      next: ()=> this.router.navigateByUrl('/login'),
       error: (e) => {
         const err = e?.error;
 

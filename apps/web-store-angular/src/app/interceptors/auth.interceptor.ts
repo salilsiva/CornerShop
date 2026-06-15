@@ -9,7 +9,8 @@ const KEY = 'cornershop.jwt';
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   const logger = inject(LoggerService);
-  const token = localStorage.getItem(KEY);
+  const token = localStorage.getItem(KEY) || sessionStorage.getItem(KEY);
+  
 
   if(token){
     logger.debug('Attaching JWT token to request', req.url);

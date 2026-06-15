@@ -9,6 +9,7 @@ using CornerShopApi.Models;
 using CornerShopApi.Controllers;
 
 using Stripe;
+using Stripe.BillingPortal;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -122,7 +123,6 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
-
 
 app.Run();
 

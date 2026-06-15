@@ -12,6 +12,8 @@ import { CartService } from './services/cart/cart.service';
 })
 export class AppComponent implements OnInit {
   title = 'web-store-angular';
+  username : string | null = '';
+  displayName: string | null = '';
   cartCount = 1;
 
   constructor(public auth: AuthService, private cartService: CartService, private router: Router){}
@@ -20,6 +22,8 @@ export class AppComponent implements OnInit {
     this.cartService.cartCount$.subscribe(count => {
     this.cartCount = count;
   });
+  this.username = localStorage.getItem('username') || sessionStorage.getItem('username') || '';
+  this.displayName = this.username.split('@')[0];
   }
   logout(){
     this.auth.logout();
